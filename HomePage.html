@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="WebsiteIcon.png" type="image/x-icon" >
+		<title>HomePage</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="HomePageStyle.css" />
+	</head>
+	<body>
+		<div class="main">
+			<nav>
+				<h2 class="logo">
+					<img src="Weblogo.gif" alt="logo" id="Navlogo" />
+				</h2>
+				<div class="navBar2">
+					<h3>Home</h3>
+					<h3>Menu</h3>
+					<h3>Content</h3>
+					<h3>About Us</h3>
+					<h3>Feedback</h3>
+					<i class="ri-menu-line"></i>
+					<button id="LogOutBtn">LogOut</button>
+				</div>
+			</nav>
+
+			<div class="content">
+				<div class="contentLeft">
+					<h1>
+						Transform Learning with Our <span>Powerful</span> Quiz and Question
+						Generator!
+					</h1>
+					<p>
+						Effortless quiz creation and intelligent question generation for
+						personalized, effective learning experiences.
+					</p>
+					<p>
+						Revolutionize assessments with our innovative platform designed for
+						private coaching classes, teachers, professors, schools, institutes,
+						and students alike.
+					</p>
+					<button>Explore</button>
+					<!-- CTA => Call Through Action Button -->
+				</div>
+				<div class="contentRight">
+					<img alt="" src="exam.svg" name="imageSlide" id="SlidingImage"  >
+				</div>
+			</div>
+		</div>
+
+		<!-- Sign Out -->
+
+		<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+			import {
+				getDatabase,
+				set,
+				ref,
+			} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+			import {
+				getAuth,
+				createUserWithEmailAndPassword,
+				signInWithEmailAndPassword,
+				signInWithPopup,
+				GoogleAuthProvider,
+                signOut
+			} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+            const firebaseConfig = {
+				apiKey: "AIzaSyB6GSyLHO7D6R9o5ZiyZkRetduGinZlgVc",
+				authDomain: "testgenerator-c7a0d.firebaseapp.com",
+				databaseURL: "https://testgenerator-c7a0d-default-rtdb.firebaseio.com",
+				projectId: "testgenerator-c7a0d",
+				storageBucket: "testgenerator-c7a0d.appspot.com",
+				messagingSenderId: "511267868593",
+				appId: "1:511267868593:web:01cfa2922bba6353daf790",
+			};
+
+            var LogOut = document.querySelector('#LogOutBtn');
+
+            const app = initializeApp(firebaseConfig);
+			const database = getDatabase(app);
+			const auth = getAuth(app);
+            LogOut.addEventListener('click',(e)=>
+            {
+                signOut(auth)
+				.then(() => {
+					// Sign-out successful.
+                    alert("LogOut Successfully");
+                    window.location.href = "index.html";
+				})
+				.catch((error) => {
+					// An error happened.
+				});
+            })
+			
+		</script>
+		<script src="HomePage.js"></script>
+	</body>
+</html>
